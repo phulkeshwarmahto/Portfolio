@@ -21,7 +21,11 @@ const Login = () => {
         setError('');
         const res = await login(email, password);
         if (!res.success) {
-            setError(res.message);
+            if (res.message === 'Please verify your email first') {
+                navigate('/verify-email', { state: { email } });
+            } else {
+                setError(res.message);
+            }
         }
     };
 

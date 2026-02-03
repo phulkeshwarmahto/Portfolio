@@ -201,6 +201,51 @@ const resetPassword = async (req, res) => {
     }
 };
 
+// @desc    Resend OTP
+// @route   POST /api/auth/resend-otp
+// @access  Public
+const resendOTP = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        if (user.isVerified) {
+            return res.status(400).json({ message: 'User is already verified' });
+        }
+
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        const otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+
+        user.otp = otp;
+        user.otpExpires = otpExpires;
+        await user.save();
+
+        const message = `Your new verification code is: ${otp}`;
+
+        try {
+            await sendEmail({
+                email: user.email,
+                subject: 'Verify your email (Resend)',
+                message,
+            });
+
+            res.json({ message: 'New OTP sent to email' });
+        } catch (error) {
+            user.otp = undefined;
+            user.otpExpires = undefined;
+            await user.save();
+            res.status(500).json({ message: 'Email could not be sent' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 // Generate JWT
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -208,4 +253,4 @@ const generateToken = (id) => {
     });
 };
 
-module.exports = { loginUser, registerUser, verifyEmail, forgotPassword, resetPassword };
+module.exports = { loginUser, registerUser, verifyEmail, forgotPassword, resetPassword, resendOTP };

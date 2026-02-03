@@ -1,5 +1,5 @@
-console.log('Starting server...');
 require('dotenv').config();
+console.log('GEMINI_API_KEY Loaded:', !!process.env.GEMINI_API_KEY);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -24,6 +24,7 @@ try {
     app.use('/api/auth', require('./routes/authRoutes'));
     app.use('/api/projects', require('./routes/projectRoutes'));
     app.use('/api/contact', require('./routes/contactRoutes'));
+    app.use('/api/ai', require('./routes/aiRoutes'));
     console.log('Routes loaded successfully.');
 } catch (error) {
     console.error('Error loading routes:', error);

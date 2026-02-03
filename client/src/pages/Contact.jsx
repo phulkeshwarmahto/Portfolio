@@ -68,8 +68,32 @@ const Contact = () => {
                             />
                         </div>
                     </div>
-                    <div className="mb-8">
-                        <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+                    <div className="mb-8 relative">
+                        <div className="flex justify-between items-center mb-2">
+                            <label htmlFor="message" className="block text-gray-700 font-semibold">Message</label>
+                            <button
+                                type="button"
+                                onClick={async () => {
+                                    if (!message || message.trim().length < 5) {
+                                        setStatus('Message must be at least 5 characters long to improve.');
+                                        return;
+                                    }
+                                    try {
+                                        setStatus('Improving with AI...');
+                                        const { data } = await axios.post('/api/ai/improve-message', { message });
+                                        if (data.success) {
+                                            setFormData({ ...formData, message: data.improvedMessage });
+                                            setStatus('Message improved! ✨');
+                                        }
+                                    } catch (error) {
+                                        setStatus(`AI Error: ${error.response?.data?.message || error.message}`);
+                                    }
+                                }}
+                                className="text-sm bg-indigo-50 text-indigo-600 px-3 py-1 rounded-md hover:bg-indigo-100 transition duration-200 flex items-center gap-1 border border-indigo-200"
+                            >
+                                <span role="img" aria-label="sparkles">✨</span> Improve with AI
+                            </button>
+                        </div>
                         <textarea
                             id="message"
                             name="message"

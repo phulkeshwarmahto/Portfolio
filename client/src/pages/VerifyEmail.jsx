@@ -7,7 +7,7 @@ const VerifyEmail = () => {
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
 
-    const { verifyEmail } = useAuth();
+    const { verifyEmail, resendOTP } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const email = location.state?.email;
@@ -28,6 +28,17 @@ const VerifyEmail = () => {
             setTimeout(() => {
                 navigate('/dashboard');
             }, 2000);
+        } else {
+            setError(res.message);
+        }
+    };
+
+    const handleResend = async () => {
+        setError('');
+        setMessage('');
+        const res = await resendOTP(email);
+        if (res.success) {
+            setMessage(res.message);
         } else {
             setError(res.message);
         }
@@ -60,6 +71,15 @@ const VerifyEmail = () => {
                     >
                         Verify
                     </button>
+                    <div className="mt-4 text-center">
+                        <button
+                            type="button"
+                            onClick={handleResend}
+                            className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold hover:underline"
+                        >
+                            Resend OTP
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

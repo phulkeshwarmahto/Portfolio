@@ -78,6 +78,23 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const resendOTP = async (email) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const { data } = await axios.post('/api/auth/resend-otp', { email }, config);
+            return { success: true, message: data.message };
+        } catch (error) {
+            return {
+                success: false,
+                message: error.response?.data?.message || error.message
+            };
+        }
+    };
+
     const forgotPassword = async (email) => {
         try {
             const config = {
@@ -118,7 +135,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, register, verifyEmail, forgotPassword, resetPassword, logout, loading }}>
+        <AuthContext.Provider value={{ user, login, register, verifyEmail, resendOTP, forgotPassword, resetPassword, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );
