@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
+// Set base URL for production
+if (import.meta.env.VITE_API_URL) {
+    axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+}
+
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
