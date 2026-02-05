@@ -1,43 +1,46 @@
+import profilePic from '../assets/me2.jpg';
+import ProfilePdf from '../assets/Profile.pdf';
+
 const About = () => {
     return (
-        <div className="max-w-4xl mx-auto px-4 py-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center border-b-2 border-indigo-500 inline-block pb-2">About Me</h2>
+        <div className="min-h-screen font-sans">
+            <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-16">
+                <div className="w-full md:w-1/2 space-y-6">
+                    <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-8">About me</h2>
 
-            <div className="bg-white shadow-md rounded-lg p-8 mb-8">
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    I am a B.Tech student in Electronics & Computer Engineering at NIAMT, Ranchi.
-                    My primary focus is on **Full-Stack Web Development (MERN)**, Data Structures & Algorithms (C++),
-                    and creating efficient software solutions.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                    I enjoy participating in hackathons, learning new technologies, and working on projects that have a tangible impact.
-                    Beyond coding, I am interested in AI-assisted development tools and technical content creation.
-                </p>
-            </div>
+                    <div className="space-y-4 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                        <p>
+                            I am a passionate full-stack developer with a strong foundation in web development. I specialize in building robust full-stack applications using the MERN stack. My passion lies in solving complex problems through clean and efficient code.
+                        </p>
+                        <p>
+                            I am a quick learner and a team player with a strong work ethic. I am always looking for new challenges and opportunities to grow as a developer.
+                        </p>
+                    </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white shadow-md rounded-lg p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Education</h3>
-                    <ul className="list-disc list-inside text-gray-600 space-y-2">
-                        <li>**B.Tech in Electronics & Computer Engineering** - NIAMT, Ranchi (Current)</li>
-                        {/* Add more education details if needed */}
-                    </ul>
+                    <div className="pt-6">
+                        <a
+                            href={ProfilePdf}
+                            download="Profile.pdf"
+                            className="inline-block px-8 py-3 bg-amber-400 text-gray-900 font-bold rounded-lg hover:bg-amber-500 transition shadow-md"
+                        >
+                            Resume
+                        </a>
+                    </div>
+
                 </div>
-                <div className="bg-white shadow-md rounded-lg p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Skills</h3>
-                    <div className="flex flex-wrap gap-2">
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">JavaScript (ES6+)</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">React.js</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Node.js</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Express.js</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">MongoDB</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Git & GitHub</span>
+
+                <div className="w-full md:w-1/2 flex justify-center relative">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-amber-500 rounded-full scale-105  transform translate-x-1.5 translate-y-2 -z-10"></div>
+                        <img
+                            src={profilePic}
+                            alt="Phulkeshwar Mahto"
+                            className="w-80 h-80 rounded-full object-cover shadow-xl border-4 border-white dark:border-neutral-800"
+                        />
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
@@ -17,12 +18,13 @@ function App() {
     return (
         <AuthProvider>
             <Router>
-                <div className="flex flex-col min-h-screen bg-gray-50">
+                <div className="flex flex-col min-h-screen">
                     <Navbar />
                     <main className="flex-grow">
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/about" element={<About />} />
+                            <Route path="/skills" element={<Skills />} />
                             <Route path="/projects" element={<Projects />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/login" element={<Login />} />

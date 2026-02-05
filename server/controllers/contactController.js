@@ -36,7 +36,26 @@ const getMessages = async (req, res) => {
     }
 };
 
+// @desc    Delete a message
+// @route   DELETE /api/contact/:id
+// @access  Private (Admin)
+const deleteMessage = async (req, res) => {
+    try {
+        const message = await Contact.findById(req.params.id);
+
+        if (message) {
+            await message.deleteOne();
+            res.json({ message: 'Message removed' });
+        } else {
+            res.status(404).json({ message: 'Message not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     sendMessage,
     getMessages,
+    deleteMessage,
 };

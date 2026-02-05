@@ -31,18 +31,18 @@ const Contact = () => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center border-b-2 border-indigo-500 inline-block pb-2">Get In Touch</h2>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center border-b-2 border-indigo-500 inline-block pb-2">Get In Touch</h2>
 
-            <div className="bg-white shadow-lg rounded-lg p-8 md:p-12">
+            <div className="bg-white dark:bg-neutral-900 shadow-lg dark:shadow-none border border-transparent dark:border-neutral-800 rounded-lg p-8 md:p-12">
                 {status && (
-                    <div className={`mb-6 text-center py-2 px-4 rounded ${status.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    <div className={`mb-6 text-center py-2 px-4 rounded ${status.includes('success') ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'}`}>
                         {status}
                     </div>
                 )}
                 <form onSubmit={onSubmit}>
                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
+                            <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Name</label>
                             <input
                                 type="text"
                                 id="name"
@@ -50,12 +50,12 @@ const Contact = () => {
                                 value={name}
                                 onChange={onChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                className="w-full px-4 py-2 border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 placeholder-gray-400 dark:placeholder-gray-600 transition"
                                 placeholder="Your Name"
                             />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
+                            <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Email</label>
                             <input
                                 type="email"
                                 id="email"
@@ -63,14 +63,14 @@ const Contact = () => {
                                 value={email}
                                 onChange={onChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                className="w-full px-4 py-2 border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 placeholder-gray-400 dark:placeholder-gray-600 transition"
                                 placeholder="Your Email"
                             />
                         </div>
                     </div>
                     <div className="mb-8 relative">
                         <div className="flex justify-between items-center mb-2">
-                            <label htmlFor="message" className="block text-gray-700 font-semibold">Message</label>
+                            <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 font-semibold">Message</label>
                             <button
                                 type="button"
                                 onClick={async () => {
@@ -89,7 +89,7 @@ const Contact = () => {
                                         setStatus(`AI Error: ${error.response?.data?.message || error.message}`);
                                     }
                                 }}
-                                className="text-sm bg-indigo-50 text-indigo-600 px-3 py-1 rounded-md hover:bg-indigo-100 transition duration-200 flex items-center gap-1 border border-indigo-200"
+                                className="text-sm bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-300 px-3 py-1 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition duration-200 flex items-center gap-1 border border-indigo-200 dark:border-indigo-800"
                             >
                                 <span role="img" aria-label="sparkles">✨</span> Improve with AI
                             </button>
@@ -101,12 +101,12 @@ const Contact = () => {
                             onChange={onChange}
                             required
                             rows="5"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="w-full px-4 py-2 border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 placeholder-gray-400 dark:placeholder-gray-600 transition"
                             placeholder="Your Message..."
                         ></textarea>
                     </div>
                     <div className="text-center">
-                        <button type="submit" className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 shadow-md">
+                        <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white px-8 py-3 rounded-full font-semibold transition duration-300 shadow-md">
                             Send Message
                         </button>
                     </div>

@@ -25,6 +25,7 @@ try {
     app.use('/api/projects', require('./routes/projectRoutes'));
     app.use('/api/contact', require('./routes/contactRoutes'));
     app.use('/api/ai', require('./routes/aiRoutes'));
+    app.use('/api/skills', require('./routes/skillRoutes'));
     console.log('Routes loaded successfully.');
 } catch (error) {
     console.error('Error loading routes:', error);

@@ -30,13 +30,13 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50">
-            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Admin Login</h2>
+        <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-100 text-gray-900 dark:bg-black dark:text-gray-100 transition-colors duration-300">
+            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md  dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6 dark:text-gray-100 transition-colors duration-300">Admin Login</h2>
                 {error && <div className="bg-red-100 text-red-700 p-3 rounded mb-4 text-center">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-gray-100 transition-colors duration-300" htmlFor="email">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -47,7 +47,7 @@ const Login = () => {
                         />
                     </div>
                     <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-gray-100 transition-colors duration-300" htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
